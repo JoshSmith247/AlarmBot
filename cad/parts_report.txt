@@ -1,0 +1,24 @@
+chassis       base_plate            186.0 x  176.0 x    4.0 mm   127.33 cm3  non-manifold: 0
+chassis       servo_bracket_R        13.0 x   40.0 x   24.0 mm     3.10 cm3  non-manifold: 0
+chassis       servo_bracket_L        13.0 x   40.0 x   24.0 mm     3.10 cm3  non-manifold: 0
+chassis       edge_bracket_R         18.0 x   44.0 x    2.4 mm     1.80 cm3  non-manifold: 0
+chassis       edge_bracket_L         18.0 x   44.0 x    2.4 mm     1.80 cm3  non-manifold: 0
+chassis       caster_skid            30.0 x   30.0 x   15.0 mm     6.20 cm3  non-manifold: 0
+enclosure     face_panel            180.0 x    3.0 x  125.0 mm    29.36 cm3  non-manifold: 0
+enclosure     back_panel            180.0 x    3.0 x  125.0 mm    66.85 cm3  non-manifold: 0
+enclosure     side_wall_R             9.0 x  144.0 x  125.0 mm    59.27 cm3  non-manifold: 0
+enclosure     side_wall_L             9.0 x  144.0 x  125.0 mm    59.27 cm3  non-manifold: 0
+enclosure     lid                   180.0 x  153.0 x    8.0 mm    84.42 cm3  non-manifold: 0
+boards        pico_mount_comms       35.0 x   57.0 x    7.9 mm     6.21 cm3  non-manifold: 0
+boards        pico_mount_control     35.0 x   57.0 x    7.9 mm     6.21 cm3  non-manifold: 0
+boards        battery_tray           88.0 x   70.4 x    8.9 mm    21.67 cm3  non-manifold: 0
+boards        imu_mount              17.0 x   32.0 x    3.0 mm     1.58 cm3  non-manifold: 0
+face_modules  matrix_frame_L         83.2 x    6.0 x   83.2 mm     2.36 cm3  non-manifold: 0
+face_modules  matrix_frame_R         83.2 x    6.0 x   83.2 mm     2.36 cm3  non-manifold: 0
+face_modules  oled_frame             30.3 x    5.0 x   30.8 mm     0.70 cm3  non-manifold: 0
+face_modules  sonar_frame_L          48.2 x    5.0 x   23.7 mm     0.83 cm3  non-manifold: 0
+face_modules  sonar_frame_R          48.2 x    5.0 x   23.7 mm     0.83 cm3  non-manifold: 0
+face_modules  buzzer_cup             20.0 x   20.0 x   10.0 mm     1.20 cm3  non-manifold: 0
+
+overlaps: none
+OK
