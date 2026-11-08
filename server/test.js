@@ -9,6 +9,12 @@ const get = (p) => fetch(`${base}${p}`).then(async (r) => [r.status, await r.tex
 const post = (body) => fetch(`${base}/api/cmd?key=dev`, { method: "POST", body }).then((r) => r.status);
 
 assert.equal((await get("/poll"))[0], 401);
+for (const [path, type] of [["/", "text/html"], ["/manifest.webmanifest", "application/manifest+json"], ["/sw.js", "text/javascript"], ["/icon-512.png", "image/png"]]) {
+    const r = await fetch(base + path);
+    assert.equal(r.status, 200, path);
+    assert.equal(r.headers.get("content-type"), type, path);
+}
+assert.equal((await fetch(base + "/api/state")).status, 401);
 assert.equal(await post("set 7:05"), 200);
 assert.equal(await post("bogus"), 400);
 assert.equal(await post("set 25:00"), 400);

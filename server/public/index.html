@@ -2,6 +2,11 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>AlarmBot</title>
+<link rel="manifest" href="/manifest.webmanifest">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<meta name="theme-color" content="#1f2942">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="AlarmBot">
 <style>
   body { font: 18px system-ui; max-width: 24rem; margin: 2rem auto; padding: 0 1rem; }
   button, input { font: inherit; padding: .5rem .8rem; margin: .2rem 0; }
@@ -31,4 +36,5 @@
   }
   refresh();
   setInterval(refresh, 3000);
+  if ("serviceWorker" in navigator) navigator.serviceWorker.register("/sw.js").catch(() => {});
 </script>

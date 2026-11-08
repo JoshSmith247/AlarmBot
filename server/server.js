@@ -1,9 +1,12 @@
 import { createServer } from "node:http";
-import { readFileSync, writeFileSync, existsSync } from "node:fs";
+import { readFileSync, writeFileSync, existsSync, readdirSync } from "node:fs";
 
 const KEY = process.env.KEY || "dev";
 const FILE = process.env.STATE_FILE || new URL("./state.json", import.meta.url).pathname;
-const PAGE = readFileSync(new URL("./public/index.html", import.meta.url));
+const TYPES = { html: "text/html", webmanifest: "application/manifest+json", js: "text/javascript", png: "image/png" };
+const files = new Map(
+    readdirSync(new URL("./public/", import.meta.url)).map((f) => [f === "index.html" ? "/" : "/" + f, [readFileSync(new URL("./public/" + f, import.meta.url)), TYPES[f.split(".").pop()]]]),
+);
 
 const state = { alarm: "07:30", enabled: false, ringing: false, events: [], seen: 0, ...(existsSync(FILE) && JSON.parse(readFileSync(FILE))) };
 let queue = [];
@@ -41,7 +44,7 @@ const server = createServer(async (req, res) => {
         res.end(text);
     };
 
-    if (url.pathname === "/") return send(200, PAGE, "text/html");
+    if (files.has(url.pathname)) return send(200, ...files.get(url.pathname));
     if ((url.searchParams.get("key") || req.headers["x-key"]) !== KEY) return send(401, "bad key\n");
 
     if (url.pathname === "/poll") {
