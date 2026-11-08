@@ -1,4 +1,5 @@
 #pragma once
+#include <stdint.h>
 
 #define NO_SYS 1
 #define LWIP_SOCKET 0
@@ -34,3 +35,8 @@
 #define SYS_STATS 0
 #define MEMP_STATS 0
 #define LINK_STATS 0
+
+#define SNTP_SERVER_DNS 1
+#define SNTP_MAX_SERVERS 1
+#define SNTP_SET_SYSTEM_TIME(sec) ntp_set(sec)
+void ntp_set(uint32_t sec);
