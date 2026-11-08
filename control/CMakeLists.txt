@@ -1,0 +1,12 @@
+cmake_minimum_required(VERSION 3.13)
+set(PICO_BOARD pico2)
+include($ENV{PICO_SDK_PATH}/external/pico_sdk_import.cmake)
+project(control C CXX ASM)
+pico_sdk_init()
+
+add_executable(control main.c ../common/protocol.c)
+target_include_directories(control PRIVATE ${CMAKE_CURRENT_LIST_DIR} ../common)
+target_link_libraries(control pico_stdlib hardware_uart)
+pico_enable_stdio_usb(control 1)
+pico_enable_stdio_uart(control 0)
+pico_add_extra_outputs(control)

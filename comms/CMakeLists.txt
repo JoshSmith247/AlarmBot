@@ -1,0 +1,12 @@
+cmake_minimum_required(VERSION 3.13)
+set(PICO_BOARD pico2_w)
+include($ENV{PICO_SDK_PATH}/external/pico_sdk_import.cmake)
+project(comms C CXX ASM)
+pico_sdk_init()
+
+add_executable(comms main.c ../common/protocol.c)
+target_include_directories(comms PRIVATE ${CMAKE_CURRENT_LIST_DIR} ../common)
+target_link_libraries(comms pico_stdlib hardware_uart pico_cyw43_arch_lwip_threadsafe_background)
+pico_enable_stdio_usb(comms 1)
+pico_enable_stdio_uart(comms 0)
+pico_add_extra_outputs(comms)
